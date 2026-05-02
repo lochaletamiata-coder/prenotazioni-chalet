@@ -2,84 +2,73 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prenotazioni Lo Chalet — Summer 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Prenotazioni Lo Chalet Summer 2026</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
-  :root{--verde:#1A3A2A;--vm:#2D5A3D;--vl:#EAF3DE;--gold:#C8A951;--bg:#FAFAF7;--gr:#E8E8E0;--lib:#27AE60;--occ:#C0392B;}
+  :root{--verde:#1A3A2A;--vm:#2D5A3D;--vl:#EAF3DE;--gold:#C8A951;--bg:#FAFAF7;--gr:#E8E8E0;--lib:#27AE60;--occ:#C0392B;--marrone:#2C2C2C;}
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#1A1A1A;}
-
-  .header{background:#2C2C2C;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--gold);}
-  .h-left{display:flex;align-items:center;gap:14px;}
-  .h-logo{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);background:#2C2C2C;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;flex-shrink:0;}
-  .h-title{font-family:'Bebas Neue';font-size:22px;color:var(--gold);letter-spacing:2px;}
-  .h-sub{font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-top:1px;}
-  .h-date{font-family:'Bebas Neue';font-size:18px;color:white;letter-spacing:1px;}
-  .h-tel{font-size:11px;color:var(--gold);margin-top:2px;text-align:right;}
-
-  .toolbar{display:flex;gap:8px;padding:12px 18px;background:#f0f0ea;border-bottom:1px solid var(--gr);}
-  .btn{padding:6px 14px;border-radius:6px;font-family:'DM Sans';font-size:12px;font-weight:600;cursor:pointer;border:2px solid var(--verde);transition:all .2s;}
-  .btn-p{background:var(--verde);color:white;}.btn-p:hover{background:var(--vm);}
-  .btn-o{background:white;color:var(--verde);}.btn-o:hover{background:var(--vl);}
-
-  /* Layout: ogni servizio = blocco con prenotazioni + mappa affiancati */
-  .servizio{display:grid;grid-template-columns:1fr 300px;border-bottom:3px solid var(--verde);}
-
-  .pren-col{padding:18px;overflow-x:auto;}
-  .sez-hdr{display:flex;align-items:center;gap:10px;margin-bottom:11px;padding-bottom:7px;border-bottom:2px solid var(--verde);}
-  .sez-ico{width:32px;height:32px;background:var(--verde);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;}
-  .sez-tit{font-family:'Bebas Neue';font-size:20px;color:var(--verde);letter-spacing:1.5px;}
-  .sez-sub{font-size:11px;color:#888;margin-top:1px;}
-
-  .cop{display:flex;gap:12px;margin-bottom:9px;padding:7px 11px;background:var(--vl);border-radius:7px;border-left:4px solid var(--verde);}
-  .cop-v{font-family:'Bebas Neue';font-size:20px;color:var(--verde);line-height:1;}
-  .cop-l{font-size:9px;color:#666;text-transform:uppercase;letter-spacing:.5px;}
-
-  .tw{overflow-x:auto;border-radius:7px;border:1px solid var(--gr);}
-  table{width:100%;border-collapse:collapse;font-size:12px;}
-  thead th{background:var(--verde);color:white;font-weight:600;font-size:10px;letter-spacing:.5px;text-transform:uppercase;padding:8px 6px;text-align:left;white-space:nowrap;}
+  .header{background:var(--marrone);padding:8px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--gold);}
+  .h-left{display:flex;align-items:center;gap:10px;}
+  .h-logo{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);background:var(--marrone);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;flex-shrink:0;}
+  .h-title{font-family:'Bebas Neue';font-size:18px;color:var(--gold);letter-spacing:1.5px;line-height:1.1;}
+  .h-sub{font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;}
+  .h-date{font-family:'Bebas Neue';font-size:14px;color:white;text-align:right;}
+  .h-tel{font-size:10px;color:var(--gold);text-align:right;}
+  .data-bar{background:var(--verde);padding:8px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .data-bar label{font-family:'Bebas Neue';font-size:14px;color:var(--gold);letter-spacing:1px;}
+  .data-input{padding:5px 10px;border:2px solid var(--gold);border-radius:6px;background:var(--marrone);color:white;font-family:'DM Sans';font-size:13px;font-weight:600;}
+  .btn-carica{padding:5px 14px;background:var(--gold);color:var(--marrone);border:none;border-radius:6px;font-family:'DM Sans';font-size:12px;font-weight:700;cursor:pointer;}
+  .sync-status{font-size:11px;color:rgba(255,255,255,0.6);margin-left:auto;}
+  .sync-ok{color:#27AE60;}.sync-err{color:#E74C3C;}
+  .toolbar{display:flex;gap:8px;padding:10px 16px;background:#f0f0ea;border-bottom:1px solid var(--gr);flex-wrap:wrap;}
+  .btn{padding:6px 12px;border-radius:6px;font-family:'DM Sans';font-size:11px;font-weight:600;cursor:pointer;border:2px solid var(--verde);}
+  .btn-p{background:var(--verde);color:white;}.btn-o{background:white;color:var(--verde);}
+  .servizio{display:grid;grid-template-columns:1fr 270px;border-bottom:3px solid var(--verde);}
+  .pren-col{padding:14px;overflow-x:auto;}
+  .sez-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--verde);}
+  .sez-ico{width:30px;height:30px;background:var(--verde);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+  .sez-tit{font-family:'Bebas Neue';font-size:18px;color:var(--verde);letter-spacing:1.5px;}
+  .sez-sub{font-size:10px;color:#888;}
+  .cop{display:flex;gap:10px;margin-bottom:8px;padding:6px 10px;background:var(--vl);border-radius:6px;border-left:4px solid var(--verde);flex-wrap:wrap;}
+  .cop-v{font-family:'Bebas Neue';font-size:18px;color:var(--verde);line-height:1;}
+  .cop-l{font-size:8px;color:#666;text-transform:uppercase;letter-spacing:.5px;}
+  .tw{overflow-x:auto;border-radius:6px;border:1px solid var(--gr);}
+  table{width:100%;border-collapse:collapse;font-size:11px;}
+  thead th{background:var(--verde);color:white;font-weight:600;font-size:9px;letter-spacing:.5px;text-transform:uppercase;padding:7px 5px;text-align:left;white-space:nowrap;}
   tbody tr{border-bottom:1px solid var(--gr);}
   tbody tr:nth-child(even){background:#F9F9F6;}
   tbody tr:hover{background:var(--vl);}
-  tbody td{padding:4px 6px;vertical-align:middle;}
-  .btn-add{margin-top:8px;padding:6px 16px;background:var(--verde);color:white;border:none;border-radius:6px;font-family:'DM Sans';font-size:12px;font-weight:600;cursor:pointer;}
-  .btn-add:hover{background:var(--vm);}
-
-  /* MAPPA colonna destra */
-  .map-col{background:#1a1a1a;padding:12px 10px;border-left:2px solid #333;position:sticky;top:0;max-height:calc(100vh - 62px);overflow-y:auto;}
-  .map-title{font-family:'Bebas Neue';font-size:14px;color:var(--gold);letter-spacing:2px;text-align:center;margin-bottom:7px;}
-  .legenda{display:flex;gap:8px;justify-content:center;margin-bottom:8px;}
-  .leg{display:flex;align-items:center;gap:3px;font-size:10px;color:rgba(255,255,255,.6);}
-  .leg-d{width:9px;height:9px;border-radius:2px;}
-  .map-box{background:#222;border-radius:8px;padding:8px 6px;}
-  .zona{margin-bottom:11px;}
-  .z-lbl{font-family:'Bebas Neue';font-size:10px;color:var(--gold);letter-spacing:1.5px;text-align:center;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:7px;}
-
-  .t{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:5px;cursor:pointer;transition:transform .15s;font-weight:700;user-select:none;width:38px;height:34px;}
-  .t:hover{transform:scale(1.08);}
-  .t-n{font-family:'Bebas Neue';font-size:12px;line-height:1;}
+  tbody td{padding:3px 5px;vertical-align:middle;}
+  .btn-add{margin-top:6px;padding:5px 14px;background:var(--verde);color:white;border:none;border-radius:6px;font-family:'DM Sans';font-size:11px;font-weight:600;cursor:pointer;}
+  .map-col{background:#1a1a1a;padding:10px 8px;border-left:2px solid #333;position:sticky;top:0;max-height:100vh;overflow-y:auto;}
+  .map-title{font-family:'Bebas Neue';font-size:13px;color:var(--gold);letter-spacing:2px;text-align:center;margin-bottom:6px;}
+  .legenda{display:flex;gap:8px;justify-content:center;margin-bottom:7px;}
+  .leg{display:flex;align-items:center;gap:3px;font-size:9px;color:rgba(255,255,255,.6);}
+  .leg-d{width:8px;height:8px;border-radius:2px;}
+  .map-box{background:#222;border-radius:7px;padding:8px 6px;}
+  .zona{margin-bottom:10px;}
+  .z-lbl{font-family:'Bebas Neue';font-size:10px;color:var(--gold);letter-spacing:1.5px;text-align:center;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:6px;}
+  .t{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:5px;cursor:pointer;transition:transform .15s;font-weight:700;user-select:none;width:36px;height:32px;}
+  .t:hover{transform:scale(1.1);}
+  .t-n{font-family:'Bebas Neue';font-size:11px;line-height:1;}
   .t-p{font-size:8px;opacity:.75;line-height:1;}
-  .t-botte{border-radius:50%;width:34px;height:34px;}
-  .t-mensola{width:44px;height:24px;border-radius:4px;}
+  .t-botte{border-radius:50%;width:32px;height:32px;}
+  .t-mensola{width:42px;height:22px;border-radius:3px;}
   .libero{background:var(--lib);color:white;}
   .occupato{background:var(--occ);color:white;}
   .t-pair{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.18);border-radius:5px;padding:2px;}
   .t-pair-v{display:flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.18);border-radius:5px;padding:2px;}
-  .sep-h{width:1px;height:22px;background:rgba(255,255,255,.2);}
-  .sep-v{height:1px;width:22px;background:rgba(255,255,255,.2);}
-
-  .map-stats{margin-top:8px;padding:6px 8px;background:rgba(200,169,81,.12);border-radius:6px;border:1px solid var(--gold);}
+  .sep-h{width:1px;height:20px;background:rgba(255,255,255,.2);}
+  .sep-v{height:1px;width:20px;background:rgba(255,255,255,.2);}
+  .map-stats{margin-top:8px;padding:6px 8px;background:rgba(200,169,81,.12);border-radius:5px;border:1px solid var(--gold);}
   .ms-l{font-size:9px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
   .ms-n{display:flex;gap:10px;}
   .ms-v{font-family:'Bebas Neue';font-size:16px;line-height:1;}
   .ms-s{font-size:8px;color:rgba(255,255,255,.4);}
-
-  @media print{
-    .toolbar{display:none;}
-    .servizio{grid-template-columns:1fr 260px;}
-    .btn-add{display:none;}
-  }
+  @media(max-width:768px){.servizio{grid-template-columns:1fr;}.map-col{position:relative;max-height:none;border-left:none;border-top:2px solid var(--verde);}.h-title{font-size:14px;}}
+  @media print{.map-col,.toolbar,.btn-add,.data-bar{display:none;}.servizio{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -87,379 +76,387 @@
 <div class="header">
   <div class="h-left">
     <div class="h-logo">
-      <span style="font-family:'Bebas Neue',sans-serif;font-size:7px;color:var(--gold);letter-spacing:1px;line-height:1.2;">LO<br>CHALET</span>
-      <span style="font-size:14px;line-height:1;">🦌</span>
-      <span style="font-size:4.5px;color:rgba(255,255,255,0.5);letter-spacing:0.3px;">MONTE AMIATA</span>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:6px;color:var(--gold);letter-spacing:1px;line-height:1.2;">LO<br>CHALET</span>
+      <span style="font-size:13px;line-height:1;">&#x1F98C;</span>
+      <span style="font-size:4px;color:rgba(255,255,255,0.5);">MONTE AMIATA</span>
     </div>
     <div>
-      <div class="h-title">Lo Chalet — Prenotazioni Summer 2026</div>
-      <div class="h-sub">Prato delle Macinaie · Monte Amiata (GR)</div>
+      <div class="h-title">Lo Chalet &mdash; Prenotazioni Summer 2026</div>
+      <div class="h-sub">Prato delle Macinaie &middot; Monte Amiata (GR)</div>
     </div>
   </div>
   <div>
     <div class="h-date" id="dataOggi"></div>
-    <div class="h-tel">📞 353 4349539</div>
+    <div class="h-tel">&#128222; 353 4349539</div>
   </div>
 </div>
 
-<div class="toolbar">
-  <button class="btn btn-p" onclick="window.print()">🖨 Stampa</button>
-  <button class="btn btn-o" onclick="resetTavoli('p');resetTavoli('c')">🔄 Reset Mappe</button>
+<div class="data-bar">
+  <label>DATA:</label>
+  <input type="date" class="data-input" id="dataSelezionata">
+  <button class="btn-carica" onclick="cambiaData()">Carica</button>
+  <span class="sync-status" id="syncStatus">Seleziona una data</span>
 </div>
 
-<!-- ══════════════════════════════════════════════ -->
-<!-- BLOCCO PRANZO -->
-<!-- ══════════════════════════════════════════════ -->
+<div class="toolbar">
+  <button class="btn btn-p" onclick="window.print()">Stampa</button>
+  <button class="btn btn-o" onclick="resetTavoli('p');resetTavoli('c')">Reset Mappe</button>
+</div>
+
 <div class="servizio">
   <div class="pren-col">
-    <div class="sez-hdr">
-      <div class="sez-ico">☀️</div>
-      <div><div class="sez-tit">Prenotazioni Pranzo</div><div class="sez-sub">Servizio 11:30 → 15:30</div></div>
-    </div>
+    <div class="sez-hdr"><div class="sez-ico">&#9728;&#65039;</div><div><div class="sez-tit">Prenotazioni Pranzo</div><div class="sez-sub">Servizio 11:30 &rarr; 15:30</div></div></div>
     <div class="cop">
       <div><div class="cop-v" id="cp-p">0</div><div class="cop-l">Prenotaz.</div></div>
       <div><div class="cop-v" id="cp-a">0</div><div class="cop-l">Adulti</div></div>
       <div><div class="cop-v" id="cp-b">0</div><div class="cop-l">Bambini</div></div>
-      <div><div class="cop-v" id="cp-t">0</div><div class="cop-l">Tot.Cop.</div></div>
-      <div><div class="cop-v" id="cp-c">0</div><div class="cop-l">Cani 🐾</div></div>
+      <div><div class="cop-v" id="cp-t">0</div><div class="cop-l">Tot.</div></div>
+      <div><div class="cop-v" id="cp-c">0</div><div class="cop-l">Cani</div></div>
     </div>
     <div class="tw"><table><thead><tr>
-      <th style="width:22px">#</th><th style="width:66px">Ora</th>
-      <th style="width:110px">Nome</th><th style="width:100px">Cognome</th>
-      <th style="width:40px">Adu.</th><th style="width:42px">Bam.</th>
-      <th style="width:38px">Cane</th><th style="width:44px">Tav.</th>
-      <th style="width:100px">Telefono</th><th>Note</th><th style="width:22px"></th>
+      <th style="width:20px">#</th><th style="width:80px">Ora</th>
+      <th style="width:100px">Nome</th><th style="width:90px">Cognome</th>
+      <th style="width:36px">Adu.</th><th style="width:36px">Bam.</th>
+      <th style="width:36px">Cane</th><th style="width:42px">Tav.</th>
+      <th style="width:95px">Telefono</th><th>Note</th><th style="width:20px"></th>
     </tr></thead><tbody id="bodyPranzo"></tbody></table></div>
-    <button class="btn-add" onclick="addRiga('pranzo')">＋ Aggiungi pranzo</button>
+    <button class="btn-add" onclick="addRiga('pranzo')">+ Aggiungi pranzo</button>
   </div>
-
-  <!-- MAPPA PRANZO -->
   <div class="map-col">
-    <div class="map-title">☀️ Mappa Pranzo</div>
-    <div class="legenda">
-      <div class="leg"><div class="leg-d" style="background:var(--lib)"></div>Libero</div>
-      <div class="leg"><div class="leg-d" style="background:var(--occ)"></div>Occupato</div>
-    </div>
+    <div class="map-title">Mappa Pranzo</div>
+    <div class="legenda"><div class="leg"><div class="leg-d" style="background:var(--lib)"></div>Libero</div><div class="leg"><div class="leg-d" style="background:var(--occ)"></div>Occupato</div></div>
     <div class="map-box">
-
-    <!-- ══ TERRAZZA INFERIORE ══ -->
-    <div class="zona">
-      <div class="z-lbl">TERRAZZA INFERIORE</div>
-      <!-- Fila 1: [34|35] sx  +  [36|37] dx -->
-      <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+    <div class="zona"><div class="z-lbl">TERRAZZA INFERIORE</div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
         <div class="t-pair">
-          <div class="t libero" id="t34_p" onclick="toggleTavolo('34','p')" title="34—5p"><div class="t-n">34</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t34_p" onclick="toggleTavolo('34','p')"><div class="t-n">34</div><div class="t-p">5p</div></div>
           <div class="sep-h"></div>
-          <div class="t libero" id="t35_p" onclick="toggleTavolo('35','p')" title="35—5p"><div class="t-n">35</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t35_p" onclick="toggleTavolo('35','p')"><div class="t-n">35</div><div class="t-p">5p</div></div>
         </div>
         <div class="t-pair">
-          <div class="t libero" id="t36_p" onclick="toggleTavolo('36','p')" title="36—5p"><div class="t-n">36</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t36_p" onclick="toggleTavolo('36','p')"><div class="t-n">36</div><div class="t-p">5p</div></div>
           <div class="sep-h"></div>
-          <div class="t libero" id="t37_p" onclick="toggleTavolo('37','p')" title="37—5p"><div class="t-n">37</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t37_p" onclick="toggleTavolo('37','p')"><div class="t-n">37</div><div class="t-p">5p</div></div>
         </div>
       </div>
-      <!-- Fila 2: [32|33] + 31(mensola) + 21(botte)+22(botte) -->
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:3px;">
         <div class="t-pair">
-          <div class="t libero" id="t32_p" onclick="toggleTavolo('32','p')" title="32—5p"><div class="t-n">32</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t32_p" onclick="toggleTavolo('32','p')"><div class="t-n">32</div><div class="t-p">5p</div></div>
           <div class="sep-h"></div>
-          <div class="t libero" id="t33_p" onclick="toggleTavolo('33','p')" title="33—5p"><div class="t-n">33</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t33_p" onclick="toggleTavolo('33','p')"><div class="t-n">33</div><div class="t-p">5p</div></div>
         </div>
-        <div class="t t-mensola libero" id="t31_p" onclick="toggleTavolo('31','p')" title="31 Mensola—3p"><div class="t-n">31</div><div class="t-p">3p</div></div>
-        <div style="display:flex;gap:4px;">
-          <div class="t t-botte libero" id="t21_p" onclick="toggleTavolo('21','p')" title="21 Botte—2p"><div class="t-n">21</div><div class="t-p">2p</div></div>
-          <div class="t t-botte libero" id="t22_p" onclick="toggleTavolo('22','p')" title="22 Botte—2p"><div class="t-n">22</div><div class="t-p">2p</div></div>
+        <div class="t t-mensola libero" id="t31_p" onclick="toggleTavolo('31','p')"><div class="t-n">31</div><div class="t-p">3p</div></div>
+        <div style="display:flex;gap:3px;">
+          <div class="t t-botte libero" id="t21_p" onclick="toggleTavolo('21','p')"><div class="t-n">21</div><div class="t-p">2p</div></div>
+          <div class="t t-botte libero" id="t22_p" onclick="toggleTavolo('22','p')"><div class="t-n">22</div><div class="t-p">2p</div></div>
         </div>
       </div>
     </div>
-
-    <!-- ══ TERRAZZA SUPERIORE ══ -->
-    <div class="zona">
-      <div class="z-lbl">TERRAZZA SUPERIORE</div>
-      <div style="display:flex;gap:6px;justify-content:center;align-items:flex-start;">
-
-        <!-- COL 1: 25+26 verticali (25 sopra, 26 sotto) -->
+    <div class="zona"><div class="z-lbl">TERRAZZA SUPERIORE</div>
+      <div style="display:flex;gap:4px;justify-content:center;align-items:flex-start;">
         <div class="t-pair-v">
-          <div class="t libero" id="t25_p" onclick="toggleTavolo('25','p')" title="25—4p"><div class="t-n">25</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t25_p" onclick="toggleTavolo('25','p')"><div class="t-n">25</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t26_p" onclick="toggleTavolo('26','p')" title="26—4p"><div class="t-n">26</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t26_p" onclick="toggleTavolo('26','p')"><div class="t-n">26</div><div class="t-p">4p</div></div>
         </div>
-
-        <!-- COL 2: 27 in alto -->
         <div style="display:flex;flex-direction:column;gap:2px;">
-          <div class="t libero" id="t27_p" onclick="toggleTavolo('27','p')" title="27—3p"><div class="t-n">27</div><div class="t-p">3p</div></div>
-          <div style="height:38px;"></div>
+          <div class="t libero" id="t27_p" onclick="toggleTavolo('27','p')"><div class="t-n">27</div><div class="t-p">3p</div></div>
+          <div style="height:32px;"></div>
         </div>
-
-        <!-- COL 3: 28+29 verticali -->
         <div class="t-pair-v">
-          <div class="t libero" id="t28_p" onclick="toggleTavolo('28','p')" title="28—4p"><div class="t-n">28</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t28_p" onclick="toggleTavolo('28','p')"><div class="t-n">28</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t29_p" onclick="toggleTavolo('29','p')" title="29—4p"><div class="t-n">29</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t29_p" onclick="toggleTavolo('29','p')"><div class="t-n">29</div><div class="t-p">4p</div></div>
         </div>
-
-        <!-- COL 4: 30 sopra + [23|24] sotto orizzontali -->
-        <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-start;">
-          <div class="t libero" id="t30_p" onclick="toggleTavolo('30','p')" title="30—3p"><div class="t-n">30</div><div class="t-p">3p</div></div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <div class="t libero" id="t30_p" onclick="toggleTavolo('30','p')"><div class="t-n">30</div><div class="t-p">3p</div></div>
           <div class="t-pair">
-            <div class="t libero" id="t23_p" onclick="toggleTavolo('23','p')" title="23—4p"><div class="t-n">23</div><div class="t-p">4p</div></div>
+            <div class="t libero" id="t23_p" onclick="toggleTavolo('23','p')"><div class="t-n">23</div><div class="t-p">4p</div></div>
             <div class="sep-h"></div>
-            <div class="t libero" id="t24_p" onclick="toggleTavolo('24','p')" title="24—4p"><div class="t-n">24</div><div class="t-p">4p</div></div>
+            <div class="t libero" id="t24_p" onclick="toggleTavolo('24','p')"><div class="t-n">24</div><div class="t-p">4p</div></div>
           </div>
         </div>
-
       </div>
     </div>
-
-    <!-- ══ VERANDA ══ -->
-    <div class="zona">
-      <div class="z-lbl">VERANDA</div>
-      <!-- 3 colonne verticali: 19+20 | 17+18 | 15+16 -->
-      <div style="display:flex;justify-content:center;gap:8px;">
+    <div class="zona"><div class="z-lbl">VERANDA</div>
+      <div style="display:flex;justify-content:center;gap:6px;">
         <div class="t-pair-v">
-          <div class="t libero" id="t19_p" onclick="toggleTavolo('19','p')" title="19—4p"><div class="t-n">19</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t19_p" onclick="toggleTavolo('19','p')"><div class="t-n">19</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t20_p" onclick="toggleTavolo('20','p')" title="20—4p"><div class="t-n">20</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t20_p" onclick="toggleTavolo('20','p')"><div class="t-n">20</div><div class="t-p">4p</div></div>
         </div>
         <div class="t-pair-v">
-          <div class="t libero" id="t17_p" onclick="toggleTavolo('17','p')" title="17—4p"><div class="t-n">17</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t17_p" onclick="toggleTavolo('17','p')"><div class="t-n">17</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t18_p" onclick="toggleTavolo('18','p')" title="18—4p"><div class="t-n">18</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t18_p" onclick="toggleTavolo('18','p')"><div class="t-n">18</div><div class="t-p">4p</div></div>
         </div>
         <div class="t-pair-v">
-          <div class="t libero" id="t15_p" onclick="toggleTavolo('15','p')" title="15—4p"><div class="t-n">15</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t15_p" onclick="toggleTavolo('15','p')"><div class="t-n">15</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t16_p" onclick="toggleTavolo('16','p')" title="16—4p"><div class="t-n">16</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t16_p" onclick="toggleTavolo('16','p')"><div class="t-n">16</div><div class="t-p">4p</div></div>
         </div>
       </div>
-    </div>
-
-  </div>
-    <div class="map-stats">
-      <div class="ms-l">Stato</div>
-      <div class="ms-n">
-        <div><div class="ms-v" style="color:var(--lib)" id="ml-p">0</div><div class="ms-s">Liberi</div></div>
-        <div><div class="ms-v" style="color:var(--occ)" id="mo-p">0</div><div class="ms-s">Occupati</div></div>
-        <div><div class="ms-v" style="color:var(--gold)" id="mt-p">0</div><div class="ms-s">Tot.</div></div>
-      </div>
-    </div>
+    </div></div>
+    <div class="map-stats"><div class="ms-l">Stato</div><div class="ms-n">
+      <div><div class="ms-v" style="color:var(--lib)" id="ml-p">23</div><div class="ms-s">Liberi</div></div>
+      <div><div class="ms-v" style="color:var(--occ)" id="mo-p">0</div><div class="ms-s">Occupati</div></div>
+    </div></div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════ -->
-<!-- BLOCCO CENA -->
-<!-- ══════════════════════════════════════════════ -->
 <div class="servizio">
   <div class="pren-col">
-    <div class="sez-hdr">
-      <div class="sez-ico">🌙</div>
-      <div><div class="sez-tit">Prenotazioni Cena</div><div class="sez-sub">Servizio 19:00 → 22:30</div></div>
-    </div>
+    <div class="sez-hdr"><div class="sez-ico">&#127769;</div><div><div class="sez-tit">Prenotazioni Cena</div><div class="sez-sub">Servizio 19:00 &rarr; 22:30</div></div></div>
     <div class="cop">
       <div><div class="cop-v" id="cc-p">0</div><div class="cop-l">Prenotaz.</div></div>
       <div><div class="cop-v" id="cc-a">0</div><div class="cop-l">Adulti</div></div>
       <div><div class="cop-v" id="cc-b">0</div><div class="cop-l">Bambini</div></div>
-      <div><div class="cop-v" id="cc-t">0</div><div class="cop-l">Tot.Cop.</div></div>
-      <div><div class="cop-v" id="cc-c">0</div><div class="cop-l">Cani 🐾</div></div>
+      <div><div class="cop-v" id="cc-t">0</div><div class="cop-l">Tot.</div></div>
+      <div><div class="cop-v" id="cc-c">0</div><div class="cop-l">Cani</div></div>
     </div>
     <div class="tw"><table><thead><tr>
-      <th style="width:22px">#</th><th style="width:66px">Ora</th>
-      <th style="width:110px">Nome</th><th style="width:100px">Cognome</th>
-      <th style="width:40px">Adu.</th><th style="width:42px">Bam.</th>
-      <th style="width:38px">Cane</th><th style="width:44px">Tav.</th>
-      <th style="width:100px">Telefono</th><th>Note</th><th style="width:22px"></th>
+      <th style="width:20px">#</th><th style="width:80px">Ora</th>
+      <th style="width:100px">Nome</th><th style="width:90px">Cognome</th>
+      <th style="width:36px">Adu.</th><th style="width:36px">Bam.</th>
+      <th style="width:36px">Cane</th><th style="width:42px">Tav.</th>
+      <th style="width:95px">Telefono</th><th>Note</th><th style="width:20px"></th>
     </tr></thead><tbody id="bodyCena"></tbody></table></div>
-    <button class="btn-add" onclick="addRiga('cena')">＋ Aggiungi cena</button>
+    <button class="btn-add" onclick="addRiga('cena')">+ Aggiungi cena</button>
   </div>
-
-  <!-- MAPPA CENA -->
   <div class="map-col">
-    <div class="map-title">🌙 Mappa Cena</div>
-    <div class="legenda">
-      <div class="leg"><div class="leg-d" style="background:var(--lib)"></div>Libero</div>
-      <div class="leg"><div class="leg-d" style="background:var(--occ)"></div>Occupato</div>
-    </div>
+    <div class="map-title">Mappa Cena</div>
+    <div class="legenda"><div class="leg"><div class="leg-d" style="background:var(--lib)"></div>Libero</div><div class="leg"><div class="leg-d" style="background:var(--occ)"></div>Occupato</div></div>
     <div class="map-box">
-
-    <!-- ══ TERRAZZA INFERIORE ══ -->
-    <div class="zona">
-      <div class="z-lbl">TERRAZZA INFERIORE</div>
-      <!-- Fila 1: [34|35] sx  +  [36|37] dx -->
-      <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+    <div class="zona"><div class="z-lbl">TERRAZZA INFERIORE</div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
         <div class="t-pair">
-          <div class="t libero" id="t34_c" onclick="toggleTavolo('34','c')" title="34—5p"><div class="t-n">34</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t34_c" onclick="toggleTavolo('34','c')"><div class="t-n">34</div><div class="t-p">5p</div></div>
           <div class="sep-h"></div>
-          <div class="t libero" id="t35_c" onclick="toggleTavolo('35','c')" title="35—5p"><div class="t-n">35</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t35_c" onclick="toggleTavolo('35','c')"><div class="t-n">35</div><div class="t-p">5p</div></div>
         </div>
         <div class="t-pair">
-          <div class="t libero" id="t36_c" onclick="toggleTavolo('36','c')" title="36—5p"><div class="t-n">36</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t36_c" onclick="toggleTavolo('36','c')"><div class="t-n">36</div><div class="t-p">5p</div></div>
           <div class="sep-h"></div>
-          <div class="t libero" id="t37_c" onclick="toggleTavolo('37','c')" title="37—5p"><div class="t-n">37</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t37_c" onclick="toggleTavolo('37','c')"><div class="t-n">37</div><div class="t-p">5p</div></div>
         </div>
       </div>
-      <!-- Fila 2: [32|33] + 31(mensola) + 21(botte)+22(botte) -->
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:3px;">
         <div class="t-pair">
-          <div class="t libero" id="t32_c" onclick="toggleTavolo('32','c')" title="32—5p"><div class="t-n">32</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t32_c" onclick="toggleTavolo('32','c')"><div class="t-n">32</div><div class="t-p">5p</div></div>
           <div class="sep-h"></div>
-          <div class="t libero" id="t33_c" onclick="toggleTavolo('33','c')" title="33—5p"><div class="t-n">33</div><div class="t-p">5p</div></div>
+          <div class="t libero" id="t33_c" onclick="toggleTavolo('33','c')"><div class="t-n">33</div><div class="t-p">5p</div></div>
         </div>
-        <div class="t t-mensola libero" id="t31_c" onclick="toggleTavolo('31','c')" title="31 Mensola—3p"><div class="t-n">31</div><div class="t-p">3p</div></div>
-        <div style="display:flex;gap:4px;">
-          <div class="t t-botte libero" id="t21_c" onclick="toggleTavolo('21','c')" title="21 Botte—2p"><div class="t-n">21</div><div class="t-p">2p</div></div>
-          <div class="t t-botte libero" id="t22_c" onclick="toggleTavolo('22','c')" title="22 Botte—2p"><div class="t-n">22</div><div class="t-p">2p</div></div>
+        <div class="t t-mensola libero" id="t31_c" onclick="toggleTavolo('31','c')"><div class="t-n">31</div><div class="t-p">3p</div></div>
+        <div style="display:flex;gap:3px;">
+          <div class="t t-botte libero" id="t21_c" onclick="toggleTavolo('21','c')"><div class="t-n">21</div><div class="t-p">2p</div></div>
+          <div class="t t-botte libero" id="t22_c" onclick="toggleTavolo('22','c')"><div class="t-n">22</div><div class="t-p">2p</div></div>
         </div>
       </div>
     </div>
-
-    <!-- ══ TERRAZZA SUPERIORE ══ -->
-    <div class="zona">
-      <div class="z-lbl">TERRAZZA SUPERIORE</div>
-      <div style="display:flex;gap:6px;justify-content:center;align-items:flex-start;">
-
-        <!-- COL 1: 25+26 verticali (25 sopra, 26 sotto) -->
+    <div class="zona"><div class="z-lbl">TERRAZZA SUPERIORE</div>
+      <div style="display:flex;gap:4px;justify-content:center;align-items:flex-start;">
         <div class="t-pair-v">
-          <div class="t libero" id="t25_c" onclick="toggleTavolo('25','c')" title="25—4p"><div class="t-n">25</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t25_c" onclick="toggleTavolo('25','c')"><div class="t-n">25</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t26_c" onclick="toggleTavolo('26','c')" title="26—4p"><div class="t-n">26</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t26_c" onclick="toggleTavolo('26','c')"><div class="t-n">26</div><div class="t-p">4p</div></div>
         </div>
-
-        <!-- COL 2: 27 in alto -->
         <div style="display:flex;flex-direction:column;gap:2px;">
-          <div class="t libero" id="t27_c" onclick="toggleTavolo('27','c')" title="27—3p"><div class="t-n">27</div><div class="t-p">3p</div></div>
-          <div style="height:38px;"></div>
+          <div class="t libero" id="t27_c" onclick="toggleTavolo('27','c')"><div class="t-n">27</div><div class="t-p">3p</div></div>
+          <div style="height:32px;"></div>
         </div>
-
-        <!-- COL 3: 28+29 verticali -->
         <div class="t-pair-v">
-          <div class="t libero" id="t28_c" onclick="toggleTavolo('28','c')" title="28—4p"><div class="t-n">28</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t28_c" onclick="toggleTavolo('28','c')"><div class="t-n">28</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t29_c" onclick="toggleTavolo('29','c')" title="29—4p"><div class="t-n">29</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t29_c" onclick="toggleTavolo('29','c')"><div class="t-n">29</div><div class="t-p">4p</div></div>
         </div>
-
-        <!-- COL 4: 30 sopra + [23|24] sotto orizzontali -->
-        <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-start;">
-          <div class="t libero" id="t30_c" onclick="toggleTavolo('30','c')" title="30—3p"><div class="t-n">30</div><div class="t-p">3p</div></div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <div class="t libero" id="t30_c" onclick="toggleTavolo('30','c')"><div class="t-n">30</div><div class="t-p">3p</div></div>
           <div class="t-pair">
-            <div class="t libero" id="t23_c" onclick="toggleTavolo('23','c')" title="23—4p"><div class="t-n">23</div><div class="t-p">4p</div></div>
+            <div class="t libero" id="t23_c" onclick="toggleTavolo('23','c')"><div class="t-n">23</div><div class="t-p">4p</div></div>
             <div class="sep-h"></div>
-            <div class="t libero" id="t24_c" onclick="toggleTavolo('24','c')" title="24—4p"><div class="t-n">24</div><div class="t-p">4p</div></div>
+            <div class="t libero" id="t24_c" onclick="toggleTavolo('24','c')"><div class="t-n">24</div><div class="t-p">4p</div></div>
           </div>
         </div>
-
       </div>
     </div>
-
-    <!-- ══ VERANDA ══ -->
-    <div class="zona">
-      <div class="z-lbl">VERANDA</div>
-      <!-- 3 colonne verticali: 19+20 | 17+18 | 15+16 -->
-      <div style="display:flex;justify-content:center;gap:8px;">
+    <div class="zona"><div class="z-lbl">VERANDA</div>
+      <div style="display:flex;justify-content:center;gap:6px;">
         <div class="t-pair-v">
-          <div class="t libero" id="t19_c" onclick="toggleTavolo('19','c')" title="19—4p"><div class="t-n">19</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t19_c" onclick="toggleTavolo('19','c')"><div class="t-n">19</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t20_c" onclick="toggleTavolo('20','c')" title="20—4p"><div class="t-n">20</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t20_c" onclick="toggleTavolo('20','c')"><div class="t-n">20</div><div class="t-p">4p</div></div>
         </div>
         <div class="t-pair-v">
-          <div class="t libero" id="t17_c" onclick="toggleTavolo('17','c')" title="17—4p"><div class="t-n">17</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t17_c" onclick="toggleTavolo('17','c')"><div class="t-n">17</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t18_c" onclick="toggleTavolo('18','c')" title="18—4p"><div class="t-n">18</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t18_c" onclick="toggleTavolo('18','c')"><div class="t-n">18</div><div class="t-p">4p</div></div>
         </div>
         <div class="t-pair-v">
-          <div class="t libero" id="t15_c" onclick="toggleTavolo('15','c')" title="15—4p"><div class="t-n">15</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t15_c" onclick="toggleTavolo('15','c')"><div class="t-n">15</div><div class="t-p">4p</div></div>
           <div class="sep-v"></div>
-          <div class="t libero" id="t16_c" onclick="toggleTavolo('16','c')" title="16—4p"><div class="t-n">16</div><div class="t-p">4p</div></div>
+          <div class="t libero" id="t16_c" onclick="toggleTavolo('16','c')"><div class="t-n">16</div><div class="t-p">4p</div></div>
         </div>
       </div>
-    </div>
-
-  </div>
-    <div class="map-stats">
-      <div class="ms-l">Stato</div>
-      <div class="ms-n">
-        <div><div class="ms-v" style="color:var(--lib)" id="ml-c">0</div><div class="ms-s">Liberi</div></div>
-        <div><div class="ms-v" style="color:var(--occ)" id="mo-c">0</div><div class="ms-s">Occupati</div></div>
-        <div><div class="ms-v" style="color:var(--gold)" id="mt-c">0</div><div class="ms-s">Tot.</div></div>
-      </div>
-    </div>
+    </div></div>
+    <div class="map-stats"><div class="ms-l">Stato</div><div class="ms-n">
+      <div><div class="ms-v" style="color:var(--lib)" id="ml-c">23</div><div class="ms-s">Liberi</div></div>
+      <div><div class="ms-v" style="color:var(--occ)" id="mo-c">0</div><div class="ms-s">Occupati</div></div>
+    </div></div>
   </div>
 </div>
 
 <script>
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbzoc58A0c1s13GQDop31AT_4LdHXYqZUO7z9WNQ3Y_XaI-8LQ1_OYVV_48-xzf45Y2b2Q/exec';
 const ORA_P=[],ORA_C=[];
 for(let h=11;h<=15;h++) for(let m of[0,30]){if(h===15&&m===30)continue;ORA_P.push(String(h).padStart(2,'0')+':'+String(m).padStart(2,'0'));}
 for(let h=19;h<=22;h++) for(let m of[0,30]){if(h===22&&m===30)continue;ORA_C.push(String(h).padStart(2,'0')+':'+String(m).padStart(2,'0'));}
-
 const TAVOLI=['15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37'];
 const STATO={p:{},c:{}};
 TAVOLI.forEach(t=>{STATO.p[t]='libero';STATO.c[t]='libero';});
+let dataCorrente='';let nP=0,nC=0;
 
-document.getElementById('dataOggi').textContent=new Date().toLocaleDateString('it-IT',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).toUpperCase();
+const oggi=new Date();
+const dd=String(oggi.getDate()).padStart(2,'0');
+const mm2=String(oggi.getMonth()+1).padStart(2,'0');
+const yyyy=oggi.getFullYear();
+document.getElementById('dataSelezionata').value=yyyy+'-'+mm2+'-'+dd;
+document.getElementById('dataOggi').textContent=oggi.toLocaleDateString('it-IT',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).toUpperCase();
 
-let nP=0,nC=0;
+function getDataFoglio(){
+  const v=document.getElementById('dataSelezionata').value;
+  if(!v)return '';
+  const parts=v.split('-');
+  return parts[2]+'-'+parts[1]+'-'+parts[0];
+}
 
-function addRiga(tipo){
+function setSyncStatus(txt,tipo){
+  const el=document.getElementById('syncStatus');
+  el.textContent=txt;
+  el.className='sync-status'+(tipo==='ok'?' sync-ok':tipo==='err'?' sync-err':'');
+}
+
+function cambiaData(){
+  const data=getDataFoglio();
+  if(!data){setSyncStatus('Seleziona una data','');return;}
+  dataCorrente=data;
+  setSyncStatus('Caricamento...','');
+  document.getElementById('bodyPranzo').innerHTML='';
+  document.getElementById('bodyCena').innerHTML='';
+  nP=0;nC=0;
+  resetTavoli('p');resetTavoli('c');
+  fetch(SCRIPT_URL+'?action=carica&data='+encodeURIComponent(data))
+    .then(r=>r.json())
+    .then(res=>{
+      if(res.success){
+        res.prenotazioni.forEach(p=>addRiga(p.servizio==='pranzo'?'pranzo':'cena',p));
+        setTimeout(function(){aggiornaMappaServizio('p');aggiornaMappaServizio('c');},100);
+        setSyncStatus('Caricato: '+data,'ok');
+      } else {setSyncStatus('Nuovo giorno: '+data,'ok');}
+    })
+    .catch(()=>setSyncStatus('Pronto','ok'));
+}
+
+function salvaRiga(id,tipo){
+  if(!dataCorrente)return;
+  const tr=document.getElementById(id);if(!tr)return;
+  const tds=[...tr.querySelectorAll('td')];
+  const dati={action:'salva',id:id,data:dataCorrente,servizio:tipo,
+    ora:tds[1]?.querySelector('select')?.value||'',
+    nome:tds[2]?.querySelector('input')?.value||'',
+    cognome:tds[3]?.querySelector('input')?.value||'',
+    adulti:tds[4]?.querySelector('input')?.value||'',
+    bambini:tds[5]?.querySelector('input')?.value||'',
+    cane:tds[6]?.querySelector('select')?.value||'',
+    tavolo:tds[7]?.querySelector('input')?.value||'',
+    telefono:tds[8]?.querySelector('input')?.value||'',
+    note:tds[9]?.querySelector('input')?.value||''};
+  setSyncStatus('Salvataggio...','');
+  fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify(dati)})
+    .then(r=>r.json())
+    .then(res=>{if(res.success)setSyncStatus('Salvato','ok');else setSyncStatus('Errore','err');})
+    .catch(()=>setSyncStatus('Offline','err'));
+}
+
+function eliminaRigaServer(id){
+  if(!dataCorrente)return;
+  fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({action:'elimina',id:id,data:dataCorrente})}).catch(()=>{});
+}
+
+function addRiga(tipo,d){
+  if(!d)d={};
   const body=document.getElementById(tipo==='pranzo'?'bodyPranzo':'bodyCena');
   const ore=tipo==='pranzo'?ORA_P:ORA_C;
   const suf=tipo==='pranzo'?'p':'c';
   const n=tipo==='pranzo'?++nP:++nC;
-  const tr=document.createElement('tr');
+  const id=d.id||(tipo+'_'+Date.now()+'_'+n);
+  const tr=document.createElement('tr');tr.id=id;
+  const mkTd=()=>{const td=document.createElement('td');td.style.cssText='padding:3px 5px;vertical-align:middle;';return td;};
+  const si='width:100%;border:none;background:transparent;font-family:DM Sans,sans-serif;font-size:11px;color:#1A1A1A;padding:1px 2px;outline:none;border-radius:3px;';
+  const onFocus=function(){this.style.background='white';this.style.boxShadow='0 0 0 2px #C8A951';};
+  const makeBlur=function(rid,rtype){return function(){this.style.background='transparent';this.style.boxShadow='none';salvaRiga(rid,rtype);};};
 
-  const mkTd=()=>{const td=document.createElement('td');td.style.cssText='padding:4px 6px;vertical-align:middle;';return td;};
-  const mkIn=(type,ph,extra)=>{
-    const el=type==='select'?document.createElement('select'):document.createElement('input');
-    if(type!=='select'){el.type=type;el.placeholder=ph||'';}
-    el.style.cssText='width:100%;border:none;background:transparent;font-family:DM Sans,sans-serif;font-size:12px;color:#1A1A1A;padding:2px 3px;outline:none;border-radius:3px;';
-    el.addEventListener('focus',function(){this.style.background='white';this.style.boxShadow='0 0 0 2px #C8A951';});
-    el.addEventListener('blur',function(){this.style.background='transparent';this.style.boxShadow='none';});
+  const c0=mkTd();c0.style.cssText='text-align:center;color:#bbb;font-size:9px;font-weight:700;padding:3px 5px;';c0.textContent=n;tr.appendChild(c0);
+
+  const c1=mkTd();
+  const sel_o=document.createElement('select');
+  sel_o.style.cssText=si+'cursor:pointer;-webkit-appearance:none;width:80px;';
+  ore.forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o;if(o===(d.ora||''))op.selected=true;sel_o.appendChild(op);});
+  sel_o.addEventListener('focus',onFocus);
+  sel_o.addEventListener('blur',makeBlur(id,tipo));
+  sel_o.onchange=aggiornaCoperti;
+  c1.appendChild(sel_o);tr.appendChild(c1);
+
+  const mkI=function(type,ph,val,extra){
+    const el=document.createElement('input');
+    el.type=type;el.placeholder=ph||'';el.value=val||'';
+    el.style.cssText=si+(extra||'');
+    el.addEventListener('focus',onFocus);
+    el.addEventListener('blur',makeBlur(id,tipo));
     return el;
   };
 
-  // Numero
-  const c0=mkTd();c0.style.textAlign='center';c0.style.fontWeight='700';c0.style.color='#bbb';c0.style.fontSize='10px';c0.textContent=n;tr.appendChild(c0);
-  // Ora
-  const c1=mkTd();const sel_o=mkIn('select');ore.forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o;sel_o.appendChild(op);});sel_o.onchange=aggiornaCoperti;c1.appendChild(sel_o);tr.appendChild(c1);
-  // Nome
-  const c2=mkTd();const nome=mkIn('text','Nome');nome.onchange=aggiornaCoperti;c2.appendChild(nome);tr.appendChild(c2);
-  // Cognome
-  const c3=mkTd();const cogn=mkIn('text','Cognome');cogn.onchange=aggiornaCoperti;c3.appendChild(cogn);tr.appendChild(c3);
-  // Adulti
-  const c4=mkTd();const adul=mkIn('number','0');adul.min='0';adul.max='30';adul.style.textAlign='center';adul.onchange=aggiornaCoperti;c4.appendChild(adul);tr.appendChild(c4);
-  // Bambini
-  const c5=mkTd();const bamb=mkIn('number','0');bamb.min='0';bamb.max='20';bamb.style.textAlign='center';bamb.onchange=aggiornaCoperti;c5.appendChild(bamb);tr.appendChild(c5);
-  // Cane
-  const c6=mkTd();const cane=mkIn('select');[['','—'],['NO','NO'],['SI','🐾 SI']].forEach(([v,t])=>{const op=document.createElement('option');op.value=v;op.textContent=t;cane.appendChild(op);});cane.onchange=aggiornaCoperti;c6.appendChild(cane);tr.appendChild(c6);
-  // Tavolo — aggiorna mappa in tempo reale con oninput
-  const c7=mkTd();const tav=mkIn('text','n°');
-  tav.style.fontWeight='700';tav.style.color='#1A3A2A';tav.style.textAlign='center';tav.style.fontSize='13px';
-  tav.oninput=()=>aggiornaMappaServizio(suf);
-  c7.appendChild(tav);tr.appendChild(c7);
-  // Telefono
-  const c8=mkTd();const tel=mkIn('tel','333 000 0000');c8.appendChild(tel);tr.appendChild(c8);
-  // Note
-  const c9=mkTd();const note=mkIn('text','Note...');c9.appendChild(note);tr.appendChild(c9);
-  // Elimina
-  const c10=mkTd();const btn=document.createElement('button');
-  btn.textContent='✕';btn.style.cssText='background:none;border:none;cursor:pointer;color:#ccc;font-size:14px;padding:2px 4px;';
-  btn.onclick=()=>{tr.remove();aggiornaCoperti();aggiornaMappaServizio(suf);};
-  c10.appendChild(btn);tr.appendChild(c10);
+  const c2=mkTd();const nome=mkI('text','Nome',d.nome);nome.onchange=aggiornaCoperti;c2.appendChild(nome);tr.appendChild(c2);
+  const c3=mkTd();c3.appendChild(mkI('text','Cognome',d.cognome));tr.appendChild(c3);
+  const c4=mkTd();const a=mkI('number','0',d.adulti,'text-align:center;');a.min='0';a.max='30';a.onchange=aggiornaCoperti;c4.appendChild(a);tr.appendChild(c4);
+  const c5=mkTd();const b=mkI('number','0',d.bambini,'text-align:center;');b.min='0';b.max='20';b.onchange=aggiornaCoperti;c5.appendChild(b);tr.appendChild(c5);
 
+  const c6=mkTd();
+  const cane=document.createElement('select');
+  cane.style.cssText=si+'cursor:pointer;-webkit-appearance:none;';
+  [['','--'],['NO','NO'],['SI','SI']].forEach(function(pair){const op=document.createElement('option');op.value=pair[0];op.textContent=pair[1];if(pair[0]===(d.cane||''))op.selected=true;cane.appendChild(op);});
+  cane.addEventListener('focus',onFocus);
+  cane.addEventListener('blur',makeBlur(id,tipo));
+  cane.onchange=aggiornaCoperti;
+  c6.appendChild(cane);tr.appendChild(c6);
+
+  const c7=mkTd();const tav=mkI('text','n',d.tavolo,'font-weight:700;color:#1A3A2A;text-align:center;font-size:12px;');
+  tav.oninput=function(){aggiornaMappaServizio(suf);};c7.appendChild(tav);tr.appendChild(c7);
+
+  const c8=mkTd();c8.appendChild(mkI('tel','333',d.telefono));tr.appendChild(c8);
+  const c9=mkTd();c9.appendChild(mkI('text','Note',d.note));tr.appendChild(c9);
+
+  const c10=mkTd();
+  const btn=document.createElement('button');
+  btn.textContent='X';
+  btn.style.cssText='background:none;border:none;cursor:pointer;color:#ccc;font-size:12px;padding:1px 3px;';
+  btn.onclick=function(){eliminaRigaServer(id);tr.remove();aggiornaCoperti();aggiornaMappaServizio(suf);};
+  c10.appendChild(btn);tr.appendChild(c10);
   body.appendChild(tr);
   aggiornaCoperti();
 }
 
 function aggiornaCoperti(){
-  [{tipo:'pranzo',pf:'cp'},{tipo:'cena',pf:'cc'}].forEach(({tipo,pf})=>{
+  [{tipo:'pranzo',pf:'cp'},{tipo:'cena',pf:'cc'}].forEach(function(item){
+    const tipo=item.tipo;const pf=item.pf;
     const rows=document.getElementById(tipo==='pranzo'?'bodyPranzo':'bodyCena').querySelectorAll('tr');
     let p=0,a=0,b=0,c=0;
-    rows.forEach(tr=>{
+    rows.forEach(function(tr){
       const tds=[...tr.querySelectorAll('td')];
-      const nome=tds[2]?.querySelector('input')?.value.trim();
-      if(!nome)return;
+      if(!tds[2]||!tds[2].querySelector('input')||!tds[2].querySelector('input').value.trim())return;
       p++;
-      a+=parseInt(tds[4]?.querySelector('input')?.value)||0;
-      b+=parseInt(tds[5]?.querySelector('input')?.value)||0;
-      if(tds[6]?.querySelector('select')?.value==='SI')c++;
+      a+=parseInt(tds[4]&&tds[4].querySelector('input')&&tds[4].querySelector('input').value)||0;
+      b+=parseInt(tds[5]&&tds[5].querySelector('input')&&tds[5].querySelector('input').value)||0;
+      if(tds[6]&&tds[6].querySelector('select')&&tds[6].querySelector('select').value==='SI')c++;
     });
     document.getElementById(pf+'-p').textContent=p;
     document.getElementById(pf+'-a').textContent=a;
@@ -472,13 +469,15 @@ function aggiornaCoperti(){
 function aggiornaMappaServizio(suf){
   const bodyId=suf==='p'?'bodyPranzo':'bodyCena';
   const ass=new Set();
-  document.querySelectorAll('#'+bodyId+' tr').forEach(tr=>{
-    const tav=tr.querySelectorAll('td')[7]?.querySelector('input')?.value.trim();
-    if(tav) tav.split(/[\/\+\-\,\s]+/).forEach(t=>{const n=t.trim();if(n)ass.add(n);});
+  document.querySelectorAll('#'+bodyId+' tr').forEach(function(tr){
+    const td=tr.querySelectorAll('td')[7];
+    if(!td)return;
+    const inp=td.querySelector('input');
+    if(!inp||!inp.value.trim())return;
+    inp.value.trim().split(/[\/+\-,\s]+/).forEach(function(t){const n=t.trim();if(n)ass.add(n);});
   });
-  TAVOLI.forEach(t=>{
-    const occ=ass.has(t);
-    STATO[suf][t]=occ?'occupato':'libero';
+  TAVOLI.forEach(function(t){
+    const occ=ass.has(t);STATO[suf][t]=occ?'occupato':'libero';
     const el=document.getElementById('t'+t+'_'+suf);
     if(el)el.className=el.className.replace(/libero|occupato/g,'')+(occ?' occupato':' libero');
   });
@@ -486,23 +485,21 @@ function aggiornaMappaServizio(suf){
 }
 
 function toggleTavolo(num,suf){
-  const occ=STATO[suf][num]==='libero';
-  STATO[suf][num]=occ?'occupato':'libero';
+  const occ=STATO[suf][num]==='libero';STATO[suf][num]=occ?'occupato':'libero';
   const el=document.getElementById('t'+num+'_'+suf);
   if(el)el.className=el.className.replace(/libero|occupato/g,'')+(occ?' occupato':' libero');
   aggiornaStats(suf);
 }
 
 function aggiornaStats(suf){
-  const l=TAVOLI.filter(t=>STATO[suf][t]==='libero').length;
-  const o=TAVOLI.filter(t=>STATO[suf][t]==='occupato').length;
+  const l=TAVOLI.filter(function(t){return STATO[suf][t]==='libero';}).length;
+  const o=TAVOLI.filter(function(t){return STATO[suf][t]==='occupato';}).length;
   document.getElementById('ml-'+suf).textContent=l;
   document.getElementById('mo-'+suf).textContent=o;
-  document.getElementById('mt-'+suf).textContent=TAVOLI.length;
 }
 
 function resetTavoli(suf){
-  TAVOLI.forEach(t=>{
+  TAVOLI.forEach(function(t){
     STATO[suf][t]='libero';
     const el=document.getElementById('t'+t+'_'+suf);
     if(el)el.className=el.className.replace(/libero|occupato/g,'')+' libero';
@@ -510,11 +507,7 @@ function resetTavoli(suf){
   aggiornaStats(suf);
 }
 
-// Init
-for(let i=0;i<20;i++)addRiga('pranzo');
-for(let i=0;i<20;i++)addRiga('cena');
-['p','c'].forEach(s=>{aggiornaStats(s);});
-document.getElementById('dataOggi').textContent=new Date().toLocaleDateString('it-IT',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).toUpperCase();
+cambiaData();
 </script>
 </body>
 </html>
